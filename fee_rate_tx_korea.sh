@@ -1,11 +1,12 @@
 #!/bin/bash
-export API_URL=http://52.137.120.180:8121
+export URL=http://52.137.120.180:8121
+export API_URL=https://testnet.ckbapp.dev
 
 day=$(TZ='Asia/Shanghai' date "+%Y-%m-%d")
 # Specifies the fee estimates algorithm. Current algorithms: ConfirmationFraction, WeightUnitsFlow.
 algorithm=ConfirmationFraction
 
-estimate_fee_rate_hex=$(curl -sS -X POST -H "Content-Type: application/json" -d "{\"id\": 1, \"jsonrpc\": \"2.0\", \"method\": \"estimate_fee_rate\", \"params\": [\"no_priority\", true]}" $API_URL | jq -r '.result')
+estimate_fee_rate_hex=$(curl -sS -X POST -H "Content-Type: application/json" -d "{\"id\": 1, \"jsonrpc\": \"2.0\", \"method\": \"estimate_fee_rate\", \"params\": [\"no_priority\", true]}" $URL | jq -r '.result')
 estimate_fee_rate=$(printf "%d" "$estimate_fee_rate_hex")
 start_block_number=$(./ckb-cli rpc get_tip_header --output-format json | jq -r '.number')
 
