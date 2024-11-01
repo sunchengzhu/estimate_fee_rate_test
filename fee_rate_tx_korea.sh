@@ -1,5 +1,5 @@
 #!/bin/bash
-export URL=http://52.137.120.180:8121
+export URL=http://52.147.120.180:8121
 export API_URL=https://testnet.ckbapp.dev
 
 while true; do
