@@ -9,7 +9,7 @@ estimate_fee_rate_hex=$(curl -sS -X POST -H "Content-Type: application/json" -d 
 estimate_fee_rate=$(printf "%d" "$estimate_fee_rate_hex")
 start_block_number=$(./ckb-cli rpc get_tip_header --output-format json | jq -r '.number')
 
-tx_hash=$(echo "123" | ./ckb-cli wallet transfer --to-address ckt1qyqp0aph6x34apl808w5varrh9lupgzvhmys7pn63z --capacity 100.0 --from-account ckt1qyqp0aph6x34apl808w5varrh9lupgzvhmys7pn63z --fee-rate $estimate_fee_rate | sed 's/Password: //')
+tx_hash=$(echo "123" | ./ckb-cli wallet transfer --to-address ckt1qyq86e27n2sf3xs0ee5knck5p2whsng60ems0zc3ha --capacity 100.0 --from-account ckt1qyq86e27n2sf3xs0ee5knck5p2whsng60ems0zc3ha --fee-rate $estimate_fee_rate | sed 's/Password: //')
 
 echo "Start Block Number: $start_block_number | estimate_fee_rate: $estimate_fee_rate | tx_hash: $tx_hash" >>"${algorithm}_fee_rate_${day}.log"
 
